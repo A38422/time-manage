@@ -1,0 +1,49 @@
+.week-view {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    margin: 10px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.day:hover {
+    background-color: #ddd;
+}
+
+.today {
+    background-color: #ddd;
+}
+
+.past {
+    opacity: 0.5;
+}
+
+.day-label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.task {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task:hover {
+    background-color: #f1f1f1;
+}
+
+.done {
+    text-decoration: line-through;
+    color: #888;
+}

@@ -1,0 +1,55 @@
+.month-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+.days-of-week {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.days-of-week div {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+
+}
+
+.day.other-month {
+    color: #ccc;
+}
+
+.day.past {
+    background-color: #f7f7f7;
+}
+
+.day.today {
+    background-color: #e5f5fa;
+}
+
+.day.future {
+    background-color: #fff;
+}
+
+.task {
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+    cursor: pointer;
+}
+
+.task.done {
+    text-decoration: line-through;
+}
