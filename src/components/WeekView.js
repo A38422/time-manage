@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import '../styles/WeekView.css';
 import Modal from "./Modal";
+import '../styles/WeekView.css';
 
-const WeekView = ({ date, now, onDateClick, tasks, onToggleDone, onAddTask, onSaveTask, onRemoveTask }) => {
+const WeekView = ({date, now, onDateClick, tasks, onToggleDone, onAddTask, onSaveTask, onRemoveTask}) => {
     const [open, setOpen] = useState(false);
 
     const getDaysInWeek = (date) => {

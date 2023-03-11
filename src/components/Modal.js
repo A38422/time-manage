@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Box, Button, Typography, Modal, Input} from '@mui/material';
-import { AiOutlineClose } from 'react-icons/ai';
-import { BiEdit } from 'react-icons/bi';
-import { BsTrash } from 'react-icons/bs';
+import {AiOutlineClose} from 'react-icons/ai';
+import {BiEdit} from 'react-icons/bi';
+import {BsTrash} from 'react-icons/bs';
 
 const style = {
     position: 'absolute',
@@ -18,14 +18,15 @@ const style = {
 };
 
 const BaseModal = ({
-                   open,
-                   handleClose,
-                   date,
-                   tasks,
-                   onToggleDone,
-                   onAddTask,
-                   onSaveTask,
-                   onRemoveTask}) => {
+                       open,
+                       handleClose,
+                       date,
+                       tasks,
+                       onToggleDone,
+                       onAddTask,
+                       onSaveTask,
+                       onRemoveTask
+                   }) => {
     const [newTask, setNewTask] = useState('');
 
     const [editingTask, setEditingTask] = useState(null);
@@ -93,11 +94,11 @@ const BaseModal = ({
                aria-describedby="modal-modal-description">
             <Box sx={style}>
                 <Typography id="modal-modal-title" component="div"
-                            sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                            sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                     <h3>Tasks for {date.toLocaleDateString()}</h3>
                     <AiOutlineClose className="pointer" onClick={handleClose} size={24}/>
                 </Typography>
-                <Typography id="modal-modal-description" component="div" sx={{ mt: 2 }}>
+                <Typography id="modal-modal-description" component="div" sx={{mt: 2}}>
                     <div className="task-list">
                         {tasks && tasks[`${date.toLocaleDateString()}`] ?
                             tasks[`${date.toLocaleDateString()}`].map((task, idx) => (

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import '../styles/MonthView.css'
 import Modal from './Modal';
+import '../styles/MonthView.css'
 
-const MonthView = ({ date, now, onDateClick, tasks, onToggleDone, onAddTask, onSaveTask, onRemoveTask }) => {
+const MonthView = ({date, now, onDateClick, tasks, onToggleDone, onAddTask, onSaveTask, onRemoveTask}) => {
     const [open, setOpen] = useState(false);
 
     const getDaysInMonth = (date) => {
@@ -106,7 +106,7 @@ const MonthView = ({ date, now, onDateClick, tasks, onToggleDone, onAddTask, onS
                    onToggleDone={handleToggleModal}
                    onAddTask={handleAddTask}
                    onSaveTask={handleSaveTask}
-                   onRemoveTask={handleRemoveTask} />
+                   onRemoveTask={handleRemoveTask}/>
         </div>
     );
 }

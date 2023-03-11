@@ -119,6 +119,23 @@ header button:hover {
     overflow: auto;
 }
 
+.task-list::-webkit-scrollbar {
+    width: 10px;
+    background-color: #FFFFFF;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(left, #fff, #e4e4e4);
+    border: 1px solid #aaa;
+}
+
+.task-list::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+}
+
 .task-list .task {
     display: flex;
     justify-content: space-between;

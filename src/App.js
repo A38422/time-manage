@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import './styles/App.css';
+import {useNavigate, useLocation} from 'react-router-dom';
 import {Button} from "@mui/material";
 import WeekView from "./components/WeekView";
 import MonthView from "./components/MonthView";
-import { useNavigate, useLocation } from 'react-router-dom';
+import './styles/App.css';
 
 const App = () => {
     const navigate = useNavigate();
@@ -59,7 +59,7 @@ const App = () => {
         if (newTask) {
             const addTasks = {...tasks};
             if (tasks && tasks[date.toLocaleDateString()]) {
-                addTasks[date.toLocaleDateString()] =  [
+                addTasks[date.toLocaleDateString()] = [
                     ...addTasks[date.toLocaleDateString()],
                     {
                         done: false,
@@ -67,7 +67,7 @@ const App = () => {
                     }
                 ];
             } else {
-                addTasks[date.toLocaleDateString()] =  [
+                addTasks[date.toLocaleDateString()] = [
                     {
                         done: false,
                         text: newTask
