@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import '../MonthView.css'
+import '../styles/MonthView.css'
 import Modal from './Modal';
 
-const MonthView = ({ date, onDateClick, tasks, onToggleDone, onAddTask }) => {
+const MonthView = ({ date, now, onDateClick, tasks, onToggleDone, onAddTask, onSaveTask, onRemoveTask }) => {
     const [open, setOpen] = useState(false);
 
     const getDaysInMonth = (date) => {
@@ -34,7 +34,7 @@ const MonthView = ({ date, onDateClick, tasks, onToggleDone, onAddTask }) => {
         }
 
         return daysInMonth;
-    };
+    }
 
     const daysInMonth = getDaysInMonth(date);
 
@@ -43,16 +43,45 @@ const MonthView = ({ date, onDateClick, tasks, onToggleDone, onAddTask }) => {
         handleOpen();
     }
 
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => setTimeout(() => setOpen(true), 100);
 
     const handleClose = () => setOpen(false);
 
     const handleToggleModal = ({date, idx}) => {
         onToggleDone({day: date, idx: idx})
-    };
+    }
 
     const handleAddTask = ({date, newTask}) => {
         onAddTask({date, newTask});
+    }
+
+    const handleSaveTask = (data) => {
+        onSaveTask(data);
+    }
+
+    const handleRemoveTask = ({date, index}) => {
+        onRemoveTask({date, index});
+    }
+
+    const classTask = (day) => {
+        let className = 'day';
+        if (day.getMonth() !== date.getMonth()) className += ' other-month';
+        if (day.getTime() < new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
+            className += ' past';
+        } else {
+            className += ' future';
+        }
+        if (tasks && tasks[day.toLocaleDateString()] && tasks[day.toLocaleDateString()].length > 0) {
+            const checkDone = tasks[day.toLocaleDateString()].filter(i => i.done);
+            if (checkDone.length === tasks[day.toLocaleDateString()].length) {
+                className += ' bg-danger';
+            } else {
+                className += ' bg-yellow';
+            }
+        }
+        if (day.getTime() === new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()) className += ' selected';
+
+        return className;
     }
 
     return (
@@ -60,25 +89,24 @@ const MonthView = ({ date, onDateClick, tasks, onToggleDone, onAddTask }) => {
             <div className="days">
                 {daysInMonth.map((day, index) => (
                     <div key={index}
-                         className={`day ${day.getMonth() === date.getMonth() ? '' : 'other-month'} ${ day.getTime() === date.getTime() ? 'selected' : '' } ${day.getTime() < new Date().getTime() ? 'past' : 'future'}`}
+                         className={classTask(day)}
                          onClick={() => handleClickDate(day)}>
                         {day.getDate()}
-                        <div className="task-list">
-                            {tasks && tasks[`${day.toLocaleDateString()}`] ?
-                            <div>
-                                Mở công việc
-                            </div> : ''}
+                        <div style={{height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            {tasks && tasks[day.toLocaleDateString()] && tasks[day.toLocaleDateString()].length > 0 ? "See tasks" : ''}
                         </div>
                     </div>
                 ))}
             </div>
 
             <Modal open={open}
-                   handleClose={handleClose}
                    date={date}
                    tasks={tasks}
+                   handleClose={handleClose}
                    onToggleDone={handleToggleModal}
-                   onAddTask={handleAddTask}/>
+                   onAddTask={handleAddTask}
+                   onSaveTask={handleSaveTask}
+                   onRemoveTask={handleRemoveTask} />
         </div>
     );
 }

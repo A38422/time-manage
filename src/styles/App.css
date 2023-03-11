@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*box-sizing: border-box;*/
+}
+
 /* App container */
 .app {
     max-width: 800px;
@@ -65,7 +71,7 @@ header button:hover {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     padding: 10px;
     font-size: 0.9rem;
     background-color: #fff;
@@ -83,8 +89,18 @@ header button:hover {
     background-color: #e6f7ff;
 }
 
+.calendar .day.bg-yellow {
+    background-color: #ffff69;
+}
+
+.calendar .day.bg-danger {
+    background-color: #ff3c3c;
+    color: white !important;
+}
+
 .calendar .day.selected {
-    background-color: #e6f7ff;
+    background-color: #e6f7ff !important;
+    color: #999 !important;
 }
 
 .calendar .day.past {
@@ -97,23 +113,22 @@ header button:hover {
 
 /* Task list */
 .task-list {
-    margin-top: 5px;
-    /*overflow: auto;*/
     width: 100%;
+    max-height: 300px;
+    margin-top: 5px;
+    overflow: auto;
 }
 
 .task-list .task {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*padding: 10px;*/
     background-color: #fff;
     border: 1px solid #ccc;
 }
 
 .task-list .task.done {
-    text-decoration: line-through;
-    color: #ccc;
+    background-color: #6ff58e;
 }
 
 .task-list .task .actions {
@@ -148,6 +163,72 @@ header button:hover {
     margin-right: 5px;
 }
 
+.mr-10 {
+    margin-right: 10px;
+}
+
 .text-secondary {
     color: #00000099;
+}
+
+.task-form button {
+    text-transform: initial;
+}
+
+.action-task span:hover {
+    text-decoration: underline;
+}
+
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.clock {
+    margin: 10px;
+    text-align: center;
+}
+
+.clock p {
+    font-size: 32px;
+}
+
+.color-box {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.box-yellow {
+    background-color: #ffff69;
+}
+
+.box-selected {
+    background-color: #e6f7ff;
+}
+
+.box-danger {
+    background-color: #ff3c3c;
+}
+
+.note {
+    margin: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.note .item-note {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note .item-note div {
+    margin-right: 5px;
 }
